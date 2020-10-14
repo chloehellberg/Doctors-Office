@@ -27,10 +27,12 @@ namespace DoctorsOffice.Controllers
       return View();
     }
     [HttpPost]
-    public ActionResult Create(Doctor doctor) //Create the new doctor from the form submit
+    public ActionResult Create(Doctor doctor, int SpecialtyId) //Create the new doctor from the form submit
     {
-      // DoctorSpecialty doctorSpecialtyRow = _db.DoctorSpecialty.FirstOrDefault(doctorSpecialty => doctorSpecialty.DoctorId == doctor.DoctorId); //explain this line??
-      // doctor.SpecialtyId = doctorSpecialtyRow.SpecialtyId;
+      if (SpecialtyId != 0)
+      {
+        _db.DoctorSpecialty.Add(new DoctorSpecialty() { DoctorId = doctor.DoctorId, SpecialtyId = SpecialtyId });
+      }
       _db.Doctors.Add(doctor);
       _db.SaveChanges();
       return RedirectToAction("Index");
@@ -38,8 +40,10 @@ namespace DoctorsOffice.Controllers
     public ActionResult Details(int id) //Displays details on a specific doctor
     {
       var thisDoctor = _db.Doctors
-        .Include(doctors => doctors.Patients)
+        .Include(doctors => doctors.Patients) //
         .ThenInclude(join => join.Patient)
+        .Include(doctors => doctors.Specialties)
+        .ThenInclude(join => join.Specialty)
         .FirstOrDefault(doctor => doctor.DoctorId == id);
         return View(thisDoctor);
     }
@@ -50,10 +54,16 @@ namespace DoctorsOffice.Controllers
       return View(thisDoctor);
     }
     [HttpPost]
-    public ActionResult Edit(Doctor doctor)
+    public ActionResult Edit(Doctor doctor, int SpecialtyId)
     {
-      // DoctorSpecialty doctorRow = _db.Specialties.FirstOrDefault(specialties => specialties.SpecialtyId == doctor.SpecialtyId);
-      // doctor.DoctorSpecialtyId = doctorRow.SpecialtyId;
+      if (SpecialtyId != 0)
+      {
+        bool tf = _db.DoctorSpecialty.Any( x => x.SpecialtyId == SpecialtyId && x.DoctorId == doctor.DoctorId );
+        if (!tf)
+        {
+          _db.DoctorSpecialty.Add(new DoctorSpecialty() { DoctorId = doctor.DoctorId, SpecialtyId = SpecialtyId });
+        }
+      }
       _db.Entry(doctor).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Index");

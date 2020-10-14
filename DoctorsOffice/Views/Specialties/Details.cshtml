@@ -4,7 +4,7 @@
 
 @using DoctorsOffice.Models;
 @model DoctorsOffice.Models.Specialty;
-@Html.ActionLink(" All Specialties", "Index", null, new { @class="btn btn-info fa fa-medkit" })
+@Html.ActionLink(" All Specialties", "Index", null, null, new { @class="btn btn-info fa fa-medkit" })
 @Html.ActionLink(" Edit", "Edit", null, new { id = Model.SpecialtyId }, new { @class="btn btn-info fa fa-edit" })
 @Html.ActionLink(" Delete", "Delete", new { id = Model.SpecialtyId }, new { @class="btn btn-info fa fa-times" })
 
@@ -18,9 +18,9 @@
   <p>no doctors found</p>
 }
 
-@foreach (Doctor doctor in @Model.Doctors)
+@foreach (var join in Model.Doctors)
 {
-  <li>@doctor.Name</li>
+  <li>@join.Doctor.Name</li>
 }
 </ul>
 <hr />

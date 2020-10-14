@@ -26,8 +26,12 @@ namespace DoctorsOffice.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Specialty specialty)
+    public ActionResult Create(Specialty specialty, int DoctorId)
     {
+      if (DoctorId != 0)
+      {
+        _db.DoctorSpecialty.Add(new DoctorSpecialty() { DoctorId = DoctorId, SpecialtyId = specialty.SpecialtyId });
+      }
       _db.Specialties.Add(specialty);
       _db.SaveChanges();
       return RedirectToAction("Index");
@@ -39,18 +43,27 @@ namespace DoctorsOffice.Controllers
     }
 
     [HttpPost]
-    public ActionResult Edit(Specialty Specialty)
+    public ActionResult Edit(Specialty specialty, int DoctorId)
     {
-      _db.Entry(Specialty).State = EntityState.Modified;
+      if (DoctorId != 0)
+      {
+        bool tf = _db.DoctorSpecialty.Any( x => x.SpecialtyId == specialty.SpecialtyId && x.DoctorId == DoctorId );
+        if (!tf)
+        {
+          _db.DoctorSpecialty.Add(new DoctorSpecialty() { DoctorId = DoctorId, SpecialtyId = specialty.SpecialtyId });
+        }
+      }
+      _db.Entry(specialty).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult Details(int id)
     {
-      Specialty thisSpecialty = _db.Specialties
-      .Include(Specialty => Specialty.Doctors)
-      .FirstOrDefault(specialty => specialty.SpecialtyId == id);
+      var thisSpecialty = _db.Specialties
+        .Include(specialty => specialty.Doctors)
+        .ThenInclude(join => join.Doctor)
+        .FirstOrDefault(specialty => specialty.SpecialtyId == id);
       return View(thisSpecialty);
     }
     public ActionResult Delete(int id)
