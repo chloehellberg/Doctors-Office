@@ -3,7 +3,7 @@
 }
 
 @model DoctorsOffice.Models.Specialty
-@Html.ActionLink(" All Specialities", "Index", null, new { @class="btn btn-info fa fa-bank" })
+@Html.ActionLink(" All Specialities", "Index", null, new { @class="btn btn-info fa fa-medkit" })
 <h4>Add Specialty</h4>
 
 @using (Html.BeginForm())
@@ -14,5 +14,5 @@
       <td>@Html.TextBoxFor(model => model.SpecialtyName)</td>
     </tr>
   </table>
-  <button type="submit" class="btn btn-info fa" ><i class="fa-plus-circle"> Add</i></button>
+  <button type="submit" class="btn btn-info fa" ><i class="fa-user-plus"> Add</i></button>
 }

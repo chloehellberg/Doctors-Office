@@ -52,8 +52,8 @@ namespace DoctorsOffice.Controllers
     [HttpPost]
     public ActionResult Edit(Doctor doctor)
     {
-      // Doctor doctorRow = _db.Specialties.FirstOrDefault(specialties => specialties.SpecialtyId == student.SpecialtyId);
-      // doctor.SpecialtyId = specialtyRow.SpecialtyId;
+      // DoctorSpecialty doctorRow = _db.Specialties.FirstOrDefault(specialties => specialties.SpecialtyId == doctor.SpecialtyId);
+      // doctor.DoctorSpecialtyId = doctorRow.SpecialtyId;
       _db.Entry(doctor).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Index");

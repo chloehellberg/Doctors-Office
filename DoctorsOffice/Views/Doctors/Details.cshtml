@@ -3,9 +3,9 @@
 }
 
 @model DoctorsOffice.Models.Doctor;
-@Html.ActionLink(" All Doctors", "Index",null, null, new { @class="btn btn-info fa fa-graduation-cap" })
+@Html.ActionLink(" All Doctors", "Index",null, null, new { @class="btn btn-info fa fa-user-md" })
 @Html.ActionLink(" Edit", "Edit", new { id = Model.DoctorId }, new { @class="btn btn-info fa fa-edit" })
-@Html.ActionLink(" Delete", "Delete", new { id = Model.DoctorId }, new { @class="btn btn-info fa fa-minus-circle" })
+@Html.ActionLink(" Delete", "Delete", new { id = Model.DoctorId }, new { @class="btn btn-info fa fa-times" })
 
 <h2>@Html.DisplayFor(model => model.Name)'s Details</h2>
 <hr />

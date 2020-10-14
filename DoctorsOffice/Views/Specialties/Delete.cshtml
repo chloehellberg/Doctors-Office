@@ -3,11 +3,11 @@
 }
 
 @model DoctorsOffice.Models.Specialty
-@Html.ActionLink(" All Specialties", "Index", null, new { @class="btn btn-info fa fa-bank" })
+@Html.ActionLink(" All Specialties", "Index", null, new { @class="btn btn-info fa fa-medkit" })
 <h2>Are you sure you want to delete this?</h2>
 
 @Html.DisplayNameFor(model => model.SpecialtyName): @Html.DisplayFor(model => model.SpecialtyName)
 @using (Html.BeginForm())
 {
-  <button type="submit" class="btn btn-info fa"><i class="fa-minus-circle"> Delete</i></button>
+  <button type="submit" class="btn btn-info fa"><i class="fa-times"> Delete</i></button>
 }

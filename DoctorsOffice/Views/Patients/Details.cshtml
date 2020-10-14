@@ -3,15 +3,15 @@
 }
 
 @model DoctorsOffice.Models.Patient
-@Html.ActionLink(" View All Patients", "Index", null, null, new { @class="btn btn-info fa fa-book" })
+@Html.ActionLink(" View All Patients", "Index", null, null, new { @class="btn btn-info fa fa-user" })
 @Html.ActionLink(" Edit", "Edit", new { id = Model.PatientId }, new { @class="btn btn-info fa fa-edit" })
-@Html.ActionLink(" Delete", "Delete", new { id = Model.PatientId }, new { @class="btn btn-info fa fa-minus-circle" })
-@Html.ActionLink(" Add Student", "AddStudent", new { id = Model.PatientId }, new { @class="btn btn-info fa fa-plus-circle" })
+@Html.ActionLink(" Delete", "Delete", new { id = Model.PatientId }, new { @class="btn btn-info fa fa-times" })
+@Html.ActionLink(" Add Patient", "AddPatient", new { id = Model.PatientId }, new { @class="btn btn-info fa fa-user-plus" })
 
 
-<h2>@Html.DisplayFor(model => model.Name)'s Details</h2>
+<p>@Html.DisplayFor(model => model.Name)'s Details</p>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<p>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</p>
 
 
 @if(@Model.Doctors.Count == 0)
@@ -20,12 +20,12 @@
 }
 else
 {
-  <h4>@Html.DisplayFor(model => model.Name)'s Doctor(s):</h4>
+  <p>@Html.DisplayFor(model => model.Name)'s Doctor(s):</p>
   <ul>
   @foreach(var join in Model.Doctors)
   {
-    <li>@join.Doctor.Name
-    @Html.ActionLink(" Delete", "DeleteDoctor", "Patients", new { joinId = @join.DoctorPatientId }, new { @class="btn btn-info fa fa-minus-circle" })
+    <li>@join.Doctor.Name 
+    @Html.ActionLink("Delete", "DeleteDoctor", "Patients", new { joinId = @join.DoctorPatientId }, new { @class="btn btn-info fa fa-times" })
     </li>
   }
   </ul>
