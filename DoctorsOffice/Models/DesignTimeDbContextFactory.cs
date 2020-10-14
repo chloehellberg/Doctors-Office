@@ -1,0 +1,26 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
+using System.IO;
+
+namespace DoctorsOffice.Models
+{
+  public class DoctorsOfficeContextFactory : IDesignTimeDbContextFactory<DoctorsOfficeContext>
+  {
+
+    DoctorsOfficeContext IDesignTimeDbContextFactory<DoctorsOfficeContext>.CreateDbContext(string[] args)
+    {
+      IConfigurationRoot configuration = new ConfigurationBuilder()
+          .SetBasePath(Directory.GetCurrentDirectory())
+          .AddJsonFile("appsettings.json")
+          .Build();
+
+      var builder = new DbContextOptionsBuilder<DoctorsOfficeContext>();
+      var connectionString = configuration.GetConnectionString("DefaultConnection");
+
+      builder.UseMySql(connectionString);
+
+      return new DoctorsOfficeContext(builder.Options);
+    }
+  }
+}
