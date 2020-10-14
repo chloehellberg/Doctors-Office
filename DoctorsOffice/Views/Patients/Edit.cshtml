@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+
+@model DoctorsOffice.Models.Patient
+@Html.ActionLink(" All Patients", "Index", null, null, new { @class="btn btn-info fa fa-users" })
+<h2>Edit</h2>
+
+<h4>Edit @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.PatientId)
+    <table>
+      <tr>
+        <td>@Html.LabelFor(model => model.Name)</td>
+        <td>@Html.EditorFor(model => model.Name)</td>
+      </tr>
+      <tr>
+        <td>@Html.LabelFor(model => model.DateOfBirth)</td>
+        <td>@Html.EditorFor(model => model.DateOfBirth)</td>
+      </tr>
+      <tr>
+        <td>@Html.Label("Select Doctor")</td>
+        <td>@Html.DropDownList("DoctorId")</td>
+      </tr>
+    </table>
+    <button type="submit" class="btn btn-info fa"><i class=" fa-edit"> Save</i></button>
+}

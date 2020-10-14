@@ -29,8 +29,8 @@ namespace DoctorsOffice.Controllers
     [HttpPost]
     public ActionResult Create(Doctor doctor) //Create the new doctor from the form submit
     {
-      // Specialty specialtyRow = _db.Specialties.FirstOrDefault(specialties => specialties.DoctorId == doctor.DoctorId); //explain this line??
-      // doctor.SpecialtyId = specialtyRow.SpecialtyId;
+      // DoctorSpecialty doctorSpecialtyRow = _db.DoctorSpecialty.FirstOrDefault(doctorSpecialty => doctorSpecialty.DoctorId == doctor.DoctorId); //explain this line??
+      // doctor.SpecialtyId = doctorSpecialtyRow.SpecialtyId;
       _db.Doctors.Add(doctor);
       _db.SaveChanges();
       return RedirectToAction("Index");

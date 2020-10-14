@@ -1,0 +1,27 @@
+﻿#footer {
+  text-align: center;
+  position:fixed;
+  bottom:0px;
+  left:0px;
+  width:100%;
+  color:#CCC;
+  background:rgb(84, 82, 117);
+  padding:8px;
+}
+#header {
+  text-align: center;
+  letter-spacing: 10px;
+  font-weight: 900;
+  font-size: 50px;
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100%;
+  color:rgb(202, 162, 162);
+  background:#333;
+  padding:8px;
+}
+.render {
+  font-size: 25px;
+  margin: 150px 50px 300px 50px;
+}

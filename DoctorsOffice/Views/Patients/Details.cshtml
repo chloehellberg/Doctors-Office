@@ -1,0 +1,32 @@
+@{
+  Layout = "_Layout";
+}
+
+@model DoctorsOffice.Models.Patient
+@Html.ActionLink(" View All Patients", "Index", null, null, new { @class="btn btn-info fa fa-book" })
+@Html.ActionLink(" Edit", "Edit", new { id = Model.PatientId }, new { @class="btn btn-info fa fa-edit" })
+@Html.ActionLink(" Delete", "Delete", new { id = Model.PatientId }, new { @class="btn btn-info fa fa-minus-circle" })
+@Html.ActionLink(" Add Student", "AddStudent", new { id = Model.PatientId }, new { @class="btn btn-info fa fa-plus-circle" })
+
+
+<h2>@Html.DisplayFor(model => model.Name)'s Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+
+@if(@Model.Doctors.Count == 0)
+{
+  <p>This patient does not have a doctor(s) yet.</p>
+}
+else
+{
+  <h4>@Html.DisplayFor(model => model.Name)'s Doctor(s):</h4>
+  <ul>
+  @foreach(var join in Model.Doctors)
+  {
+    <li>@join.Doctor.Name
+    @Html.ActionLink(" Delete", "DeleteDoctor", "Patients", new { joinId = @join.DoctorPatientId }, new { @class="btn btn-info fa fa-minus-circle" })
+    </li>
+  }
+  </ul>
+}

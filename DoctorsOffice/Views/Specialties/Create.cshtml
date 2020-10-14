@@ -1,0 +1,18 @@
+@{
+  Layout = "_Layout";
+}
+
+@model DoctorsOffice.Models.Specialty
+@Html.ActionLink(" All Specialities", "Index", null, new { @class="btn btn-info fa fa-bank" })
+<h4>Add Specialty</h4>
+
+@using (Html.BeginForm())
+{
+  <table>
+    <tr>
+      <td>@Html.LabelFor(model => model.SpecialtyName)</td>
+      <td>@Html.TextBoxFor(model => model.SpecialtyName)</td>
+    </tr>
+  </table>
+  <button type="submit" class="btn btn-info fa" ><i class="fa-plus-circle"> Add</i></button>
+}

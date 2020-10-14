@@ -1,0 +1,18 @@
+@{
+  Layout = "_Layout";
+}
+
+@model DoctorsOffice.Models.Doctor
+@Html.ActionLink(" All Doctors", "Index", null, null, new { @class="btn btn-info fa fa-user-md" })
+<h4>Add Doctor</h4>
+
+@using (Html.BeginForm())
+{
+  <table>
+    <tr>
+      <td>@Html.LabelFor(model => model.Name)</td>
+      <td>@Html.TextBoxFor(model => model.Name)</td>
+    </tr> 
+  </table>
+  <button type="submit" class="btn btn-default fa" ><i class="fa-user-plus"> Add Doctor</i></button>
+}

@@ -1,6 +1,9 @@
 ﻿@{
   Layout = "_Layout";
 }
-@Html.ActionLink(" Name", "View", "Conttroller", null, new { @class="btn btn-info fa fa-icon" })
 
+@Html.ActionLink(" All Patients", "Index", "Patients", null, new { @class="btn btn-info fa fa-user" })
+@Html.ActionLink(" All Doctors", "Index", "Doctors", null, new { @class="btn btn-info fa fa-user-md" })
+@Html.ActionLink(" All Specialties", "Index", "Specialties", null, new { @class="btn btn-info fa fa-medkit" })
 <h1>Doctors Office</h1>
+

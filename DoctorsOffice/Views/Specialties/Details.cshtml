@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+@using DoctorsOffice.Models;
+@model DoctorsOffice.Models.Specialty;
+@Html.ActionLink(" All Specialties", "Index", null, new { @class="btn btn-info fa fa-bank" })
+@Html.ActionLink(" Edit", "Edit", null, new { id = Model.SpecialtyId }, new { @class="btn btn-info fa fa-edit" })
+@Html.ActionLink(" Delete", "Delete", new { id = Model.SpecialtyId }, new { @class="btn btn-info fa fa-minus-circle" })
+
+<h2>Specialty Details</h2>
+<hr />
+<h3>Specialty: @Html.DisplayFor(model => model.SpecialtyName)</h3>
+<p>Doctors in this Specialty:</p>
+<ul>
+@if (@Model.Doctors.Count == 0)
+{
+  <p>no doctors found</p>
+}
+
+@foreach (Doctor doctor in @Model.Doctors)
+{
+  <li>@doctor.Name</li>
+}
+</ul>
+<hr />
