@@ -2,8 +2,16 @@
   Layout = "_Layout";
 }
 
-@Html.ActionLink(" All Patients", "Index", "Patients", null, new { @class="btn btn-info fa fa-user" })
-@Html.ActionLink(" All Doctors", "Index", "Doctors", null, new { @class="btn btn-info fa fa-user-md" })
-@Html.ActionLink(" All Specialties", "Index", "Specialties", null, new { @class="btn btn-info fa fa-medkit" })
+<div class="row">
+  <div class="col-md-4">
+    @Html.ActionLink(" All Patients", "Index", "Patients", null, new { @class="btn btn-info fa fa-user" })
+  </div>
+  <div class="col-md-4">
+    @Html.ActionLink(" All Doctors", "Index", "Doctors", null, new { @class="btn btn-info fa fa-user-md" })
+  </div>
+  <div class="col-md-4">
+    @Html.ActionLink(" All Specialties", "Index", "Specialties", null, new { @class="btn btn-info fa fa-medkit" })
+  </div>
+</div>
 <h1>Doctors Office</h1>
 

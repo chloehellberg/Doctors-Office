@@ -21,7 +21,9 @@ else
   <ul>
   @foreach(var join in Model.Patients)
   {
-    <li>@join.Patient.Name</li>
+    <li>@join.Patient.Name
+    @Html.ActionLink("Delete", "DeletePatient", "Doctors", new { joinId = @join.DoctorPatientId, DoctorId = Model.DoctorId }, new { @class="btn btn-info fa fa-times" })
+    </li>
   }
   </ul>
 }
@@ -35,7 +37,9 @@ else
   <ul>
   @foreach(var join in Model.Specialties)
   {
-    <li>@join.Specialty.SpecialtyName</li>
+    <li>@join.Specialty.SpecialtyName
+    @Html.ActionLink("Delete", "DeleteSpecialty", "Specialties", new { joinId = @join.DoctorSpecialtyId , DoctorId = Model.DoctorId }, new { @class="btn btn-info fa fa-times" })
+    </li>
   }
   </ul>
 }

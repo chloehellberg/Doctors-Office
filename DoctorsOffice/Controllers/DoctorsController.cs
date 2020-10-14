@@ -81,6 +81,13 @@ namespace DoctorsOffice.Controllers
         _db.SaveChanges();
         return RedirectToAction("Index");
     }
+    public ActionResult DeletePatient(int joinId, int DoctorId)
+    {
+      var joinEntry = _db.DoctorPatient.FirstOrDefault(entry => entry.DoctorPatientId == joinId);
+      _db.DoctorPatient.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Details", new { id = DoctorId});
+    }
     // public ActionResult Completed(int joinId)
     // {
     //     var joinEntry = _db.DoctorPatient.FirstOrDefault(entry => entry.DoctorPatientId == joinId);
